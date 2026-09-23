@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StudyAI - AI Study Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- Background effects -->
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+
+    <div class="app">
+
+        <!-- =========================
+             TOP BAR
+        ========================== -->
+
+        <header class="topbar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <h2>StudyAI</h2>
+
+                    <span>
+                        AI Study Assistant
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                    AI Tutor Online
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+
+                    <span>✦</span>
+
+                    Powered by AI + RAG
+
+                </div>
+
+
+                <h1>
+
+                    Study smarter.
+
+                    <span>
+                        Understand deeper.
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Upload your study material and let your
+                    AI tutor explain, teach and help you prepare.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             UPLOAD SECTION
+        ========================== -->
+
+        <section class="upload-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="heading-icon">
+                        ↑
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Upload your study material
+                        </h2>
+
+                        <p>
+                            Your AI tutor will use this document
+                            as its primary knowledge source.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="upload-box">
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+
+                <div class="upload-content">
+
+                    <h3>
+                        Choose a PDF to study
+                    </h3>
+
+                    <p>
+                        Upload lecture notes, textbooks,
+                        assignments or study material.
+                    </p>
+
+
+                    <div class="file-picker">
+
+                        <input
+                            type="file"
+                            id="pdfInput"
+                            accept=".pdf"
+                        >
+
+
+                        <label
+                            for="pdfInput"
+                            class="file-picker-button"
+                        >
+
+                            Choose PDF
+
+                        </label>
+
+
+                        <span
+                            id="selectedFileName"
+                            class="selected-file-name"
+                        >
+
+                            No file selected
+
+                        </span>
+
+                    </div>
+
+
+                    <span class="file-format">
+
+                        PDF files only
+
+                    </span>
+
+                </div>
+
+
+                <button
+                    id="uploadButton"
+                    class="primary-button"
+                >
+
+                    Upload & Analyze
+
+                    <span>→</span>
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="uploadStatus"
+                class="upload-status"
+            >
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STUDY WORKSPACE
+        ========================== -->
+
+        <section class="workspace">
+
+
+            <!-- DOCUMENT HEADER -->
+
+            <div class="document-header">
+
+                <div class="document-left">
+
+                    <div class="pdf-icon">
+                        PDF
+                    </div>
+
+
+                    <div>
+
+                        <span class="document-label">
+                            CURRENT STUDY MATERIAL
+                        </span>
+
+
+                        <div
+                            id="documentName"
+                            class="document-name"
+                        >
+
+                            No document uploaded
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grounding-badge">
+
+                    <span>●</span>
+
+                    Grounded in your document
+
+                </div>
+
+            </div>
+
+
+            <!-- CHAT HEADER -->
+
+            <div class="chat-header">
+
+                <div>
+
+                    <h2>
+                        AI Tutor
+                    </h2>
+
+                    <p>
+                        Ask questions about your study material
+                    </p>
+
+                </div>
+
+
+                <div class="ai-avatar">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <!-- CHAT -->
+
+            <div
+                id="chatBox"
+                class="chat-box"
+            >
+
+                <div class="welcome-message">
+
+                    <div class="welcome-icon">
+                        ✦
+                    </div>
+
+
+                    <h3>
+                        Your AI tutor is ready
+                    </h3>
+
+
+                    <p>
+
+                        Upload a study document and start asking
+                        questions about its content.
+
+                    </p>
+
+
+                    <div class="suggestion-row">
+
+                        <span>
+                            Explain a concept
+                        </span>
+
+                        <span>
+                            Summarize a topic
+                        </span>
+
+                        <span>
+                            Generate questions
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION INPUT -->
+
+            <div class="question-area">
+
+                <div class="input-wrapper">
+
+                    <textarea
+                        id="questionInput"
+                        placeholder="Ask your AI tutor anything about your study material..."
+                        rows="2"
+                    ></textarea>
+
+
+                    <div class="input-hint">
+
+                        Enter to send • Shift + Enter for new line
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="askButton"
+                    class="ask-button"
+                >
+
+                    <span>
+                        Ask
+                    </span>
+
+                    <span class="send-icon">
+                        ↑
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer>
+
+            <span>
+                AI Study Assistant
+            </span>
+
+            <span>
+                Document-grounded learning
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <!-- Markdown renderer -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+    ></script>
+
+
+    <!-- Application JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
